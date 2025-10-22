@@ -281,8 +281,8 @@ const simulation = d3.forceSimulation(allNodes)
   .force("charge", d3.forceManyBody().strength(-300))
   .force("center", d3.forceCenter(width / 2, height / 2))
   .force("collision", d3.forceCollide(50))
-  .force("x", d3.forceX(width / 2).strength(0.02))
-  .force("y", d3.forceY(height / 2).strength(0.02));
+  .force("x", d3.forceX(width / 2).strength(0.05))
+  .force("y", d3.forceY(height / 2).strength(0.05));
 
 // === 先定義箭頭樣式 ===
 const defs = svg.append("defs");
@@ -678,9 +678,6 @@ function updateNodeVisibilityBySeason(selectedSeason) {
   node.transition()
     .duration(500)
     .style("opacity", d => {
-      // 🔹 先處理強制隱藏範圍
-      if (/^f(26[7-9]|27[0-4])$/.test(d.code)) return 0;
-
       // 🔹 如果沒有選任何季節，全部顯示
       if (!activeSeasons.size) return 1;
 
