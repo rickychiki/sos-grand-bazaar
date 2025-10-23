@@ -24,7 +24,7 @@ if (lang) {
 }
 
 // 判斷是否為支援語言
-const currentLang = supportedLangs.includes(lang) ? lang : defaultLang;
+let currentLang = supportedLangs.includes(lang) ? lang : defaultLang;
 
 // === 共用：翻譯函式 ===
 function t(id, vars = {}) {
