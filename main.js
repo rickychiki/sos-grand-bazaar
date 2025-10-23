@@ -1,10 +1,30 @@
 let node, link, tooltip;
-let currentLang = "zh-Hant";
 let isDragging = false;
 let selectedNode = null;
 let selectedFilters = {};
 let activeSeasons = new Set();
 let activeFilters = {};
+
+// 支援的語言清單
+const supportedLangs = ["en", "zh-Hant", "zh-Hans", "jp"];
+const defaultLang = "zh-Hant";
+
+// 取得 URL ?lang= 參數
+const urlParams = new URLSearchParams(window.location.search);
+let lang = urlParams.get("lang");
+
+if (lang) {
+  lang = lang.trim().replace("_", "-");
+  const parts = lang.split("-");
+  if (parts.length === 2) {
+    lang = parts[0].toLowerCase() + "-" + parts[1].charAt(0).toUpperCase() + parts[1].slice(1).toLowerCase();
+  } else {
+    lang = lang.toLowerCase();
+  }
+}
+
+// 判斷是否為支援語言
+const currentLang = supportedLangs.includes(lang) ? lang : defaultLang;
 
 // === 共用：翻譯函式 ===
 function t(id, vars = {}) {
