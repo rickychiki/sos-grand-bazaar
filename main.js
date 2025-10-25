@@ -759,8 +759,8 @@ function toggleFilter(activeFilters) {
       });
     }
 
-    // processed-goods: 展開它的原料
-    if ((node.type === "processed_goods") && Array.isArray(node.ingredient)) {
+    // processed-goods or recipe: 展開它的原料
+    if ((node.type === "processed_goods" || node.type === "recipe") && Array.isArray(node.ingredient)) {
       node.ingredient.forEach(ingId => {
         const ingNode = nodeMap.get(ingId);
         if (ingNode) collectAllIngredients(ingNode, nodeMap, collected);
