@@ -1835,7 +1835,7 @@ window.recipes = [
     ],
     "extra_ingredient": [
       "nut_oil",
-      "herb_oil",
+      "olive_oil",
       "pumpkin_oil",
       "grape_oil"
     ]
@@ -4425,7 +4425,7 @@ window.recipes = [
     "extra_ingredient": [
       "butter_a",
       "sugar",
-      "chocolate_cookies"
+      "chocolate"
     ]
   },
   {
