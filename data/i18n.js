@@ -963,7 +963,7 @@ window.I18N = {
     "strawberry_mochi": "草莓大福",
     "cake": "蛋糕",
     "egg_tart": "蛋塔",
-    "dango": "賞月團子",
+    "dango": "賞月糰子",
     "wrapped_rice_cakes": "甜粽",
     "walnut_cookies": "核桃酥",
     "soy_milk_pudding": "豆漿布丁",
