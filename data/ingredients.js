@@ -1128,7 +1128,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1156,7 +1156,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1171,7 +1171,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1185,7 +1185,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 6,
+    "base_yield": 7,
     "grow_times_in_days": 14
   },
   {
@@ -1199,7 +1199,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 6,
     "grow_times_in_days": 14
   },
   {
@@ -1215,7 +1215,7 @@ window.ingredients = [
       "pink_things"
     ],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1229,7 +1229,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1244,7 +1244,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1259,7 +1259,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1273,7 +1273,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
@@ -1287,7 +1287,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "fruit_tree",
-    "base_yield": 7,
+    "base_yield": 8,
     "grow_times_in_days": 14
   },
   {
