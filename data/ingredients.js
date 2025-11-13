@@ -1425,34 +1425,6 @@ window.ingredients = [
     "grow_times_in_days": 9
   },
   {
-    "code": "a93",
-    "img": "./image/summer_tea_leaves.png",
-    "id": "summer_tea_leaves",
-    "type": "ingredient",
-    "price": 70,
-    "season": [
-      "summer"
-    ],
-    "trending": [],
-    "crop_type": "multiple_harvest",
-    "base_yield": 5,
-    "grow_times_in_days": 9
-  },
-  {
-    "code": "a94",
-    "img": "./image/autumn_tea_leaves.png",
-    "id": "autumn_tea_leaves",
-    "type": "ingredient",
-    "price": 70,
-    "season": [
-      "autumn"
-    ],
-    "trending": [],
-    "crop_type": "multiple_harvest",
-    "base_yield": 5,
-    "grow_times_in_days": 9
-  },
-  {
     "code": "i01",
     "img": "./image/pale_chub.png",
     "id": "pale_chub",

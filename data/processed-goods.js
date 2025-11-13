@@ -1059,5 +1059,43 @@ window.processed_goods = [
       "autumn_blend_tea_tin",
       "lavender_tea_tin"
     ]
+  },
+  {
+    "code": "a93",
+    "img": "./image/summer_tea_leaves.png",
+    "id": "summer_tea_leaves",
+    "type": "processed_goods",
+    "price": 70,
+    "trending": [],
+    "windmill": "yellow",
+    "craft_time": 720,
+    "ingredient": [
+      "spring_tea_leaves"
+    ],
+    "season": [
+      "summer"
+    ],
+    "crop_type": "multiple_harvest",
+    "base_yield": 5,
+    "grow_times_in_days": 9
+  },
+  {
+    "code": "a94",
+    "img": "./image/autumn_tea_leaves.png",
+    "id": "autumn_tea_leaves",
+    "type": "processed_goods",
+    "price": 70,
+    "trending": [],
+    "windmill": "yellow",
+    "craft_time": 720,
+    "ingredient": [
+      "summer_tea_leaves"
+    ],
+    "season": [
+      "autumn"
+    ],
+    "crop_type": "multiple_harvest",
+    "base_yield": 5,
+    "grow_times_in_days": 9
   }
 ];
