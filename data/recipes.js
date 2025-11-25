@@ -1621,7 +1621,7 @@ window.recipes = [
       "milk_a"
     ],
     "extra_ingredient": [
-      "cheese_a",
+      "butter_a",
       "honey_a",
       "sugar"
     ]
@@ -1642,7 +1642,7 @@ window.recipes = [
     "extra_ingredient": [
       "butter_a",
       "soy_sauce",
-      "sugar",
+      "salt",
       "curry_powder",
       "honey_a"
     ]
