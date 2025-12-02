@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./data/fish.js"></script>
+    <script src="./data/i18n.js"></script>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --accent: #3b82f6;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Controls & Tabs (Simplified) */
+        .controls-wrapper {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 25px;
+            flex-direction: column;
+            /* Increase horizontal gap between groups */
+            align-items: flex-start;
+            /* Align groups at the top */
+            margin-bottom: 15px;
+        }
+
+        /* NEW: Wrapper for Label + Button Group */
+        .filter-group-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* NEW: Label above the button group */
+        .filter-label {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* NEW: Container for the buttons */
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-right: 15px;
+            /* Gap between buttons */
+        }
+
+        /* Button style adjustment for row layout */
+        .filter-group button {
+            padding: 6px 10px;
+            /* Adjust padding for tighter row layout */
+            font-size: 13px;
+            /* Other button styles are inherited */
+        }
+
+        .emoji-grid-cell {
+            font-size: 0.8em;
+            padding: 0 1px;
+            text-align: center;
+        }
+
+        /* 確保 Emoji 元素本身不會被 Grid 擠壓 */
+        .emoji-cell {
+            /* 這裡可以放一些通用的 Emoji 樣式，例如字體大小 */
+            font-size: 1.1em;
+            padding: 0 1px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .emoji-cell.hide {
+            opacity: 0.1;
+        }
+
+        /* Tooltip box */
+        .emoji-cell::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 6px 10px;
+            font-size: 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Tooltip arrow */
+        .emoji-cell::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        /* When hover */
+        .emoji-cell:hover::after,
+        .emoji-cell:hover::before {
+            opacity: 1;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        #btn-show-all.active {
+            background-color: red;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            border-radius: 0;
+            padding: 10px 5px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: none;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Grid System */
+        #fish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* Fish Card: Crucial Flexbox Setup */
+        .fish-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            display: flex;
+            gap: 15px;
+            min-height: 150px;
+        }
+
+        .card-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+        }
+
+        /* NEW: Vertical Visual Container (Right Side) */
+        .grid-visuals {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            gap: 5px;
+            padding-left: 10px;
+            border-left: 1px dashed #e5e7eb;
+        }
+
+        /* Layout for Multiple Columns */
+        .grid-emoji-container {
+            display: flex;
+            flex-direction: row;
+            /* 列與列之間橫向排列 */
+            gap: 5px;
+            /* 列間距 */
+        }
+
+        /* Layout for Emojis within one Column */
+        .emoji-column {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        .emoji-cell {
+            font-size: 0.8em;
+            line-height: 1.2;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Other styles (Probability, Headers) remain mostly the same */
+
+        .fish-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .fish-name {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--text-primary);
+        }
+
+        .fish-price {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .fish-size {
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .fish-meta {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .grid-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 10px;
+        }
+
+        .meta-item {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .prob-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .prob-track {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .prob-fill {
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="controls-wrapper">
+            <div class="controls-row">
+                <div id="lang-group">
+                    <button onclick="setLang('zh-Hant')" id="btn-zh-Hant">繁體中文</button>
+                    <button onclick="setLang('zh-Hans')" id="btn-zh-Hans">简体中文</button>
+                    <button onclick="setLang('en')" id="btn-en">English</button>
+                    <button onclick="setLang('jp')" id="btn-jp">日本語</button>
+                </div>
+                <div id="all-fish-toggle-container"></div>
+                <div class="filter-group">
+                    <div class="filter-group-wrapper">
+                        <span class="filter-label" id="label-season">季節</span>
+                        <div id="season-group" class="filter-group"></div>
+                    </div>
+
+                    <div class="filter-group-wrapper">
+                        <span class="filter-label" id="label-weather">天氣</span>
+                        <div id="weather-group" class="filter-group"></div>
+                    </div>
+
+                    <div class="filter-group-wrapper">
+                        <span class="filter-label" id="label-rod">魚竿</span>
+                        <div id="rod-group" class="filter-group"></div>
+                    </div>
+
+                    <div class="filter-group-wrapper">
+                        <span class="filter-label" id="label-time"></span>
+                        <div id="time-group" class="filter-group"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs-container" id="location-tabs"></div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <span id="current-loc-label">Location</span>
+        <span id="total-weight-label">Total Weight: 0</span>
+    </div>
+
+    <div id="fish-grid">
+    </div>
+    </div>
+
+    <script>
+        // --- 1. Data (Updated CSV) ---
+        // Note: Added the new columns and data provided
+
+        // --- 2. Configuration & Dictionaries ---
+        let rawData = [];
+        let currentLang = 'zh-Hant';
+
+        const sizeCategoryColors = {
+            // 使用淺色背景以保持文本可讀性
+            'small': 'rgba(52, 211, 153, 0.15)',      // 綠 (Green)
+            'medium': 'rgba(59, 130, 246, 0.15)',     // 藍 (Blue)
+            'large': 'rgba(239, 68, 68, 0.15)',       // 紅 (Red)
+            'guardian': 'rgba(251, 191, 36, 0.25)',   // 黃 (Yellow)
+            'item': 'white'                          // 不填色 (白色背景)
+        };
+
+        const timeFilterMap = [
+            { key: 'all', label: { 'zh-Hant': '全部', 'zh-Hans': '全部', en: 'Anytime', jp: 'いつでも' }, match: ['*'] },
+            { key: '1200', label: { 'zh-Hant': '6:00-17:59', 'zh-Hans': '6:00-17:59', en: '6:00-17:59', jp: '6:00-17:59' }, match: ['-'] },
+            { key: '1800', label: { 'zh-Hant': '18:00-04:59', 'zh-Hans': '18:00-04:59', en: '18:00-04:59', jp: '18:00-04:59' }, match: ['-', '18:00-04:59'] },
+            { key: 'nowind1200', label: { 'zh-Hant': '無風12:00-17:59', 'zh-Hans': '无风12:00-17:59', en: 'No Wind 12:00-17:59', jp: '風力0 12:00-17:59' }, match: ['-', '12:00-17:59'] }
+        ];
+
+        const timeDisplayMap = {
+            '12:00-17:59': timeFilterMap.find(t => t.key === 'nowind1200').label
+        };
+
+        const locationIds = [
+            'zephyr_town_west',
+            'zephyr_town_middle',
+            'zephyr_town_east',
+            'mountains_peak',
+            'mountains_middle',
+            'mountains_base',
+            'bazaar',
+            'equestrian_park'
+        ];
+
+        const locationsEmoji = {
+            'zephyr_town_west': "🏤",
+            'zephyr_town_middle': "🏤",
+            'zephyr_town_east': "🏤",
+            'mountains_peak': "🌳",
+            'mountains_middle': "🌳",
+            'mountains_base': "🌳",
+            'bazaar': "🎉",
+            'equestrian_park': "🐎"
+        };
+
+        const seasons = [
+            'spring',
+            'summer',
+            'autumn',
+            'winter'
+        ];
+
+        const seasonsEmoji = {
+            spring: "🌸",
+            summer: "☀️",
+            autumn: "🍁",
+            winter: "❄️"
+        };;
+
+        const weathers = [
+            'sunny',
+            'cloudy',
+            'rain',
+            'heavy_rain',
+            'typhoon',
+            'snow',
+            'blizzard'
+        ];
+
+        const weathersEmoji = {
+            'sunny': "🌞",
+            'cloudy': "⛅",
+            'rain': "💧",
+            'heavy_rain': "⚡",
+            'typhoon': "🌀",
+            'snow': "❄️ ",
+            'blizzard': "🧊"
+        };
+
+        const seasonWeatherMap = {
+            'spring': ['sunny', 'cloudy', 'rain', 'heavy_rain'],
+            'summer': ['sunny', 'cloudy', 'rain', 'heavy_rain', 'typhoon'],
+            'autumn': ['sunny', 'cloudy', 'rain', 'heavy_rain'],
+            'winter': ['sunny', 'cloudy', 'snow', 'blizzard']
+        };
+
+        const rodLevels = {
+            '-': 0,
+            'standard': 1, 'copper': 2, 'silver': 3, 'gold': 4, 'orihalcum': 5
+        };
+
+        // Application State
+        const state = {
+            season: 'spring',
+            weatherIndex: "sunny",
+            rodLevel: 5,
+            locationId: 'zephyr_town_west', // Default tab
+            timeFilter: 'all',
+            showAll: false
+        };
+
+        // --- 3. Parsing Logic ---
+
+        function init() {
+            if (typeof window.fish === 'undefined' || !Array.isArray(window.fish)) {
+                console.error("window.fish data is not available or not in the expected format.");
+                return;
+            }
+            rawData = window.fish;
+
+            // Pre-process: attach allowed locations set to each fish object
+            rawData.forEach(d => {
+                d._locations = new Set(d.location);
+                d._gridSize = d.staminaValue;
+                d._isStarGrid = d.isStar;
+                d._calcWeight = d.weight;
+                d._rodKey = d.fish_rod_level;
+                d._rodLevel = rodLevels[d._rodKey];
+            });
+
+            setupControls();
+            updateUI();
+        }
+
+        // NEW: Setup controls with buttons
+        function setupControls() {
+            // --- 1. Location Tabs (Unchanged) ---
+            const tabContainer = d3.select('#location-tabs');
+
+            locationIds.forEach(locId => {
+                tabContainer.append('button')
+                    .attr('class', 'tab-btn')
+                    .attr('id', `tab-${locId}`)
+                    .text(() => {
+                        const i18nKey = locId;
+                        return window.I18N[currentLang] && window.I18N[currentLang][i18nKey] ?
+                            window.I18N[currentLang][i18nKey] : locId;
+                    })
+                    .on('click', () => {
+                        state.locationId = locId;
+                        updateUI();
+                    });
+            });
+
+            // --- 2. Season Buttons ---
+            const seasonGroup = d3.select('#season-group');
+            seasons.forEach(s => {
+                seasonGroup.append('button')
+                    .attr('id', `btn-season-${s}`)
+                    .text(() => {
+                        const i18nKey = s;
+                        return window.I18N[currentLang] && window.I18N[currentLang][i18nKey] ?
+                            window.I18N[currentLang][i18nKey] : s;
+                    })
+                    .on('click', function () {
+                        state.season = s;
+                        updateUI();
+                    });
+            });
+
+            // --- 3. Weather Buttons ---
+            const weatherGroup = d3.select('#weather-group');
+            weathers.forEach(w => {
+                weatherGroup.append('button')
+                    .attr('id', `btn-weather-${w}`)
+                    .text(() => {
+                        const i18nKey = w;
+                        return window.I18N[currentLang] && window.I18N[currentLang][i18nKey] ?
+                            window.I18N[currentLang][i18nKey] : w;
+                    })
+                    .on('click', function () {
+                        state.weatherIndex = w;
+                        updateUI();
+                    });
+            });
+
+            // --- 4. Rod Level Buttons ---
+            const rodGroup = d3.select('#rod-group');
+            Object.entries(rodLevels).forEach(([k, v]) => {
+                if (v > 0) {
+                    const i18nKey = k;
+                    const localizedText = window.I18N[currentLang] && window.I18N[currentLang][i18nKey] ?
+                        window.I18N[currentLang][i18nKey] : k;
+
+                    rodGroup.append('button')
+                        .attr('value', v)
+                        .attr('id', `btn-rod-${v}`)
+                        .text(localizedText)
+                        .on('click', function () {
+                            state.rodLevel = v;
+                            updateUI();
+                        });
+                }
+            });
+
+            // 🌟 NEW: Time Filter Buttons 🌟
+            const timeGroup = d3.select('#time-group');
+            timeFilterMap.forEach(t => {
+                timeGroup.append('button')
+                    .attr('id', `btn-time-${t.key}`)
+                    .text(t.label[currentLang] || t.label.en)
+                    .on('click', function () {
+                        state.timeFilter = t.key;
+                        updateUI();
+                    });
+            });
+
+            // 🌟 NEW: 8. Show All Fish Button 🌟
+            const allFishContainer = d3.select('#all-fish-toggle-container');
+
+            if (!allFishContainer.empty()) {
+                allFishContainer.append('button')
+                    .attr('id', 'btn-show-all')
+                    .on('click', function () {
+                        state.showAll = !state.showAll;
+
+                        updateUI();
+                    });
+            }
+
+            setLang(currentLang); // Initialize language and highlighting
+        }
+
+        // NEW: Highlight the currently selected buttons
+        function highlightFilters() {
+            // 1. Season
+            d3.selectAll('#season-group button').classed('active', false);
+            d3.select(`#btn-season-${state.season}`).classed('active', true);
+
+            // 2. Weather
+            d3.selectAll('#weather-group button').classed('active', false);
+            const currentWeatherCol = state.weatherIndex;
+            d3.select(`#btn-weather-${currentWeatherCol}`).classed('active', true);
+
+            // 3. Rod Level
+            d3.selectAll('#rod-group button').classed('active', false);
+            d3.select(`#btn-rod-${state.rodLevel}`).classed('active', true);
+
+            // 4. Time Filter
+            d3.selectAll('#time-group button').classed('active', false);
+            d3.select(`#btn-time-${state.timeFilter}`).classed('active', true);
+
+            d3.select('#btn-show-all').classed('active', state.showAll);
+        }
+
+        // NEW: Filter time buttons based on the current season (無風12:00-17:59 僅在秋季顯示)
+        function filterTimeButtons() {
+            // 只有秋季 (Autumn) 才顯示 'nowind1200'
+            const isAutumn = state.season === 'autumn';
+            const nowindButton = d3.select('#btn-time-nowind1200');
+
+            // 1. 顯示/隱藏按鈕
+            if (nowindButton.empty() === false) {
+                nowindButton.style('display', isAutumn ? 'inline-block' : 'none');
+            }
+
+            // 2. 修正無效的時間選擇
+            // 如果當前季節不是秋季，但選中的是 'nowind1200'，則強制切換回 'all'
+            if (!isAutumn && state.timeFilter === 'nowind1200') {
+                state.timeFilter = 'all';
+            }
+        }
+
+        // NEW: Filter weather buttons based on the current season
+        function filterWeatherButtons() {
+            const requiredWeather = seasonWeatherMap[state.season] || [];
+
+            // 1. 顯示/隱藏按鈕
+            d3.select('#weather-group').selectAll('button')
+                .style('display', function (d, i) {
+                    // 通過索引 i 獲取 weatherMap 中的對應物件，並取出其 CSV 欄位名稱
+                    const weatherCol = weathers[i];
+                    // 檢查該天氣是否在當前季節的有效列表中
+                    return requiredWeather.includes(weatherCol) ? 'inline-block' : 'none';
+                });
+
+            // 2. 修正無效的天氣選擇, 如果當前選中的天氣無效 (例如在冬天選了台風)
+            if (!requiredWeather.includes(state.weatherIndex)) {
+                state.weatherIndex = "sunny";
+            }
+        }
+
+        function displayProb(show) {
+            d3.selectAll(".prob-container")
+                .style("display", show ? null : "none");
+        }
+
+        function displayFilterGroup(show) {
+            d3.selectAll(".filter-group")
+                .style("display", show ? null : "none");
+            d3.selectAll(".tabs-container")
+                .style("display", show ? null : "none");
+        }
+
+        // --- 4. Core Logic ---
+        function updateUI() {
+            renderTabs();
+            filterWeatherButtons();
+            filterTimeButtons();
+            highlightFilters();
+            displayFilterGroup(!state.showAll);
+
+            const selectedWeather = state.weatherIndex;
+            const selectedSeasonKey = state.season;
+            const selectedLocationKey = state.locationId;
+            const selectedRodLevel = state.rodLevel;
+
+            let activeFish = rawData;
+            if (!state.showAll) {
+                // Filter Sequence
+                // 1. Location Filter
+                activeFish = rawData.filter(d => d._locations.has(selectedLocationKey));
+
+                // 2. Environment Filter (Season, Weather, Rod)
+                activeFish = activeFish.filter(d => {
+                    const fishSeasons = d.season || []; // Array of English strings
+                    // Season Match: 檢查 fishSeasons 陣列是否包含當前季節
+                    const seasonMatch = fishSeasons.includes(selectedSeasonKey);
+
+                    const fishWeather = d.weather || []; // Array of English strings
+                    // Weather Match: 檢查 fishWeather 陣列是否包含當前天氣
+                    const weatherMatch = fishWeather.includes(selectedWeather);
+                    // Rod Match: 檢查魚的所需魚竿等級 (d._rodLevel) 是否小於等於當前選擇的魚竿等級
+                    const reqRodLevel = d._rodLevel || 0;
+                    const rodMatch = reqRodLevel <= selectedRodLevel;
+
+                    return seasonMatch && weatherMatch && rodMatch;
+                });
+
+                // 3. Time Filter 
+                const activeTimeFilter = timeFilterMap.find(t => t.key === state.timeFilter);
+                const timeMatchValues = activeTimeFilter ? activeTimeFilter.match : ['*'];
+
+                activeFish = activeFish.filter(d => {
+                    // 將 d.time 的空字串 "" 視為 '全部/無限制'，對應舊資料的 '-'
+                    const fishTime = d.time ? String(d.time).trim() : '';
+                    const timeValue = fishTime === "" ? '-' : fishTime;
+
+                    if (timeMatchValues.includes('*')) {
+                        return true;
+                    }
+
+                    // 處理 '18:00' 和 '12:00' 篩選器需要包含 '-' 的情況，以及 'nowind1200'
+                    return timeMatchValues.includes(timeValue);
+                });
+            }
+
+            // 5. Weight Calculation (Scoped to this location)
+            let totalWeight = 0;
+            const severeWeatherKeys = ['heavy_rain', 'typhoon', 'blizzard'];
+            const isSevereWeather = severeWeatherKeys.includes(selectedWeather);
+
+            activeFish.forEach(d => {
+
+                let w = d.weight || 0;
+
+                // 🌟 特殊天氣佔比邏輯 🌟
+                if (isSevereWeather) {
+                    // i55, i58, i67 佔比是 13
+                    if (['i55', 'i58', 'i67'].includes(d.code)) {
+                        w = 13;
+                    }
+                    // i56, i57, i68 佔比是 10
+                    else if (['i56', 'i57', 'i59', 'i68'].includes(d.code)) {
+                        w = 10;
+                    }
+                }
+                // ---------------------
+
+                d._calcWeight = w;
+                totalWeight += w;
+            });
+
+            // 6. Probability
+            activeFish.forEach(d => {
+                d._prob = totalWeight > 0 ? d._calcWeight / totalWeight : 0;
+            });
+
+
+            if (state.showAll) {
+                activeFish.sort((a, b) => {
+                    // 1. 提取字母和數字部分
+                    // 使用正則表達式來分離字串中的字母和數字。
+                    // \D* 匹配零個或多個非數字字符 (字母部分)
+                    // \d+ 匹配一個或多個數字字符 (數字部分)
+                    const regex = /(\D*)(\d+)/;
+
+                    // 提取 a 的部分
+                    const matchA = a.code.match(regex);
+                    const alphaA = matchA ? matchA[1] : a.code; // 字母部分 (例如 "i")
+                    const numA = matchA ? parseInt(matchA[2], 10) : NaN; // 數字部分 (例如 58)
+
+                    // 提取 b 的部分
+                    const matchB = b.code.match(regex);
+                    const alphaB = matchB ? matchB[1] : b.code;
+                    const numB = matchB ? parseInt(matchB[2], 10) : NaN;
+
+                    // --- 排序邏輯 ---
+
+                    // 2. 首先比較字母部分 (字母升序排列: a, b, c...)
+                    if (alphaA < alphaB) {
+                        return -1; // a 在前
+                    }
+                    if (alphaA > alphaB) {
+                        return 1; // b 在前
+                    }
+
+                    // 3. 如果字母部分相同，則比較數字部分 (數字升序排列: 1, 2, 3...)
+                    if (alphaA === alphaB) {
+                        // 直接使用數字相減，實現升序
+                        // 例如：i58 - i10 => 58 - 10 = 48 (正數)，i10 在前 (i10, i58)
+                        return numA - numB;
+                    }
+
+                    // 備用返回值
+                    return 0;
+                });
+            } else {
+                // Sort: Highest probability first
+                activeFish.sort((a, b) => b._prob - a._prob);
+            }
+
+            // Update Stats
+            d3.select('#current-loc-label').text(state.showAll ? "" : window.I18N[currentLang][state.locationId]);
+            d3.select('#total-weight-label').text(state.showAll ? "" : window.I18N[currentLang]["total_weight"] + `: ${totalWeight}`);
+
+            renderGrid(activeFish);
+        }
+
+        function renderTabs() {
+            d3.selectAll('.tab-btn').classed('active', false);
+            d3.select(`#tab-${state.locationId}`).classed('active', true);
+        }
+
+        function renderGrid(data) {
+            const container = d3.select('#fish-grid');
+            const update = container.selectAll('.fish-card').data(data, d => d.code);
+
+            update.exit().remove();
+
+            const enter = update.enter().append('div').attr('class', 'fish-card');
+
+            // --- Card Structure ---
+            // Left: Info
+            const info = enter.append('div').attr('class', 'card-info');
+
+            const header = info.append('div').attr('class', 'fish-header');
+            header.append('div').attr('class', 'fish-name');
+            header.append('div').attr('class', 'fish-price');
+            header.append('div').attr('class', 'fish-size');
+
+            const meta = info.append('div').attr('class', 'fish-meta');
+            const gridLabel = info.append('div').attr('class', 'grid-label');
+
+            const probWrap = info.append('div').attr('class', 'prob-container');
+            const probLbl = probWrap.append('div').attr('class', 'prob-label');
+            probLbl.append('span').text(window.I18N[currentLang]["chance"]);
+            probLbl.append('span').attr('class', 'prob-val-text');
+
+            probWrap.append('div').attr('class', 'prob-track')
+                .append('div').attr('class', 'prob-fill');
+            displayProb(!state.showAll);
+
+            // NEW: Fish Grid Visual (Emoji Line)
+            const visuals = enter.append('div').attr('class', 'grid-visuals');
+            visuals.append('div').attr('class', 'grid-emoji-container');
+
+            // --- Merge & Update ---
+            const all = update.merge(enter).order();
+
+            all.style('background-color', d => {
+                const category = d.size ? String(d.size).trim() : 'item';
+                return sizeCategoryColors[category] || 'white';
+            });
+            // 🌟 NEW: 1. 魚名查找使用 window.I18N 和 d.id 🌟
+            all.select('.fish-name').text(d => {
+                const key = d.id; // 使用 d.id 作為翻譯鍵
+                return window.I18N[currentLang] && window.I18N[currentLang][key] ? window.I18N[currentLang][key] : d.id;
+            });
+
+            const sizeLbl = window.I18N[currentLang]["max_size"];
+            const gridLbl = window.I18N[currentLang]["stamina"];
+            const rodLbl = currentLang === "en" ? " " + window.I18N[currentLang]["rod"] : window.I18N[currentLang]["rod"];
+            // 2. 價格
+            all.select('.fish-price').text(d => `💰 ${d.price}`);
+            all.select('.fish-size').text(d => d.max_size > 0 ? `📏 ${sizeLbl}: ${d.max_size}` : "");
+
+            // 3. Meta Update: 使用新鍵值 d.max_size, d.staminaValue, d.isStar
+            all.select('.fish-meta').html(d => {
+
+                // Time Constraint (使用 d.time)
+                const fishTime = d.time ? String(d.time).trim() : '-';
+                let timeHtml = "";
+
+                if (fishTime !== '-') {
+                    let displayTimeText = fishTime;
+
+                    if (timeDisplayMap[fishTime]) {
+                        displayTimeText = timeDisplayMap[fishTime][currentLang] || timeDisplayMap[fishTime].en;
+                    }
+
+                    timeHtml = `<div class="meta-item">⏱️ ${displayTimeText}</div>`;
+                }
+
+                const seasonEmojiSpans = (d.season || [])
+                    .map(s => {
+                        const key = s.toLowerCase();
+                        const emoji = seasonsEmoji[key] || "";
+                        if (!emoji) return "";
+
+                        const tooltip = window.I18N[currentLang][s] || "";
+                        return `<span class="emoji-cell" data-tooltip="${tooltip}">${emoji}</span>`;
+                    })
+                    .filter(html => html !== "")
+                    .join('');
+
+                const seasonsHtml = seasonEmojiSpans.length > 0
+                    ? `<div class="meta-item seasons-list">${seasonEmojiSpans}</div>`
+                    : "";
+
+
+                // 🌟 UPDATED: 天氣陣列處理 - 簡化為單一陣列，準備交給 CSS Grid 🌟
+                const weatherEmojiSpans = (d.weather || [])
+                    .map(w => {
+                        const key = w.toLowerCase();
+                        const emoji = weathersEmoji[key] || "";
+                        if (!emoji) return "";
+
+                        const tooltip = window.I18N[currentLang][w] || "";
+                        return `<span class="emoji-cell" data-tooltip="${tooltip}">${emoji}</span>`;
+                    })
+                    .filter(html => html !== "")
+                    .join('');
+
+                const weathersHtml = weatherEmojiSpans.length > 0
+                    ? `<div class="meta-item weathers-list">${weatherEmojiSpans}</div>`
+                    : "";
+                // 假設 d 是當前魚的資料對象，包含 location array (d.location)
+                // 假設 locationIds 是所有可能的地點 ID 列表，用於遍歷
+
+                const locationEmojiSpans = (locationIds || [])
+                    .map(l => {
+                        const key = l.toLowerCase();
+                        const emoji = locationsEmoji[key] || ""; // 確保使用小寫鍵查找
+
+                        if (!emoji) return ""; // 如果找不到對應的表情符號，則跳過
+
+                        // 判斷當前的 l (地點 ID) 是否存在於 d.location 陣列中
+                        const isAvailable = (d.location || []).includes(l);
+
+                        // 根據 isAvailable 決定是否添加 'hide' class
+                        const hideClass = isAvailable ? '' : ' hide';
+
+                        const tooltip = window.I18N[currentLang][l] || "";
+
+                        // 組合 class
+                        return `<span class="emoji-cell${hideClass}" data-tooltip="${tooltip}">${emoji}</span>`;
+                    })
+                    .filter(html => html !== "")
+                    .join('');
+
+                const locationsHtml = locationEmojiSpans.length > 0
+                    ? `<div class="meta-item locations-list">${locationEmojiSpans}</div>`
+                    : "";
+
+                const rodKeyHtml = d._rodKey ? `<div class="meta-item"> ${d._rodLevel > 1 ? window.I18N[currentLang][d._rodKey] + rodLbl : rodLbl}</div>` : "";
+
+                return seasonsHtml + weathersHtml + locationsHtml + rodKeyHtml + timeHtml;
+            });
+
+            // Probability Updates
+            all.select('.prob-val-text').text(d => (d._prob * 100).toFixed(1) + '%');
+            all.select('.prob-fill').style('width', d => (d._prob * 100) + '%');
+            all.select('.prob-fill').style('background-color', d => {
+                if (d._prob > 0.25) return '#10b981'; // Green
+                if (d._prob > 0.10) return '#f59e0b'; // Yellow
+                return '#ef4444'; // Red
+            });
+
+            // CRITICAL: Grid Emoji Visual Updates (Horizontal arrangement of Vertical columns)
+            all.select('.grid-emoji-container').html(''); // Clear container before redrawing columns
+
+            all.each(function (d) {
+                const totalSize = d._gridSize;
+                const container = d3.select(this).select('.grid-emoji-container');
+                const emoji = d._isStarGrid ? '⭐' : '🐟';
+                if (totalSize === 0) return;
+
+                const max_height = 10;
+                let remaining = totalSize;
+                let current_size = 0;
+
+                // Loop to create all necessary columns
+                while (remaining > 0) {
+                    // Determine the size of the current column (max 10)
+                    current_size = Math.min(remaining, max_height);
+
+                    // Create the column container (placed horizontally by .grid-emoji-container)
+                    const column = container.append('div').attr('class', 'emoji-column');
+
+                    // Fill the column with emojis (placed vertically)
+                    for (let i = 0; i < current_size; i++) {
+                        column.append('div').attr('class', 'emoji-grid-cell').text(emoji);
+                    }
+                    remaining -= current_size;
+                }
+            });
+
+            // Grid Visual Updates
+            // Fill blocks based on d._gridSize
+            all.selectAll('.grid-block')
+                .classed('filled', function () {
+                    // Get index from data attribute or compute
+                    const idx = parseInt(d3.select(this).attr('data-idx'));
+                    // data._gridSize is e.g. 4. We want indices 0, 1, 2, 3 to be filled.
+                    // Since flex is column-reverse, the first DOM element corresponds to bottom? 
+                    // Actually, flex-direction column-reverse puts the *last* DOM element at the top.
+                    // But simplified: I appended blocks 0..9. 
+                    // If I use column-reverse, block 0 is at bottom.
+                    // So if size is 3, I want blocks 0, 1, 2 filled.
+                    const fishSize = d3.select(this.parentNode).datum()._gridSize;
+                    return idx < fishSize;
+                });
+
+        }
+
+        // --- Helpers (setLang UPDATED for I18N and all controls) ---
+        window.setLang = function (lang) {
+            currentLang = lang;
+            d3.selectAll('#lang-group button').classed('active', false);
+            d3.select('#btn-' + lang).classed('active', true);
+
+            // 1. 更新主要過濾器標籤 (使用 I18N 查找)
+            // 假設翻譯鍵為 'label_season', 'label_weather', 'label_rod', 'label_time'
+            const I18N = window.I18N[currentLang] || {};
+
+            d3.select('#label-season').text(I18N["season"]);
+            d3.select('#label-weather').text(I18N["weather"]);
+            d3.select('#label-rod').text(I18N["rod"]);
+            d3.select('#label-time').text(I18N["time"]);
+            d3.selectAll('.prob-label span:first-child').text(I18N["chance"]);
+            d3.select('#all-fish-toggle-container button').text(I18N["show_all"]);
+
+            // 2. 更新地點 Tab 文本 (Location Tab)
+            d3.selectAll('.tab-btn').text(function () {
+                const locId = this.id.replace('tab-', '');
+                // 假設地點翻譯鍵就是 ID (e.g., 'zephyr_town_west')
+                return locationsEmoji[locId] + ' ' + I18N[locId];
+            });
+
+            // 3. 更新季節按鈕文本 (Season Button)
+            d3.select('#season-group').selectAll('button').text(function () {
+                // 季節的 ID/Key 是 'Spring'/'Summer'/...
+                const seasonKey = this.id.replace('btn-season-', '');
+                return seasonsEmoji[seasonKey] + ' ' + I18N[seasonKey];
+            });
+
+            // 4. 更新天氣按鈕文本 (Weather Button)
+            d3.select('#weather-group').selectAll('button').text(function (d, i) {
+                const w = weathers[i];
+                const weatherKey = w;
+                const localizedText = I18N[weatherKey];
+                return weathersEmoji[weatherKey] + ' ' + localizedText;
+            });
+
+            // 5. 更新魚竿按鈕文本 (Rod Button) (保留自上次修正)
+            d3.select('#rod-group').selectAll('button').text(function () {
+                const level = d3.select(this).attr('value');
+                // 找到標準英文鍵值: 'basic', 'copper', etc.
+                const rodKey = Object.keys(rodLevels).find(k => rodLevels[k] == level);
+
+                // 使用 rodKey 在 window.I18N 中查找翻譯
+                return I18N[rodKey] || rodKey;
+            });
+
+            // 6. 更新時間按鈕文本 (Time Button)
+            d3.select('#time-group').selectAll('button').text(function () {
+                const key = this.id.replace('btn-time-', '');
+                const t = timeFilterMap.find(item => item.key === key);
+
+                // 🌟 NEW: 使用 I18N 查找時間按鈕標籤 (假設翻譯鍵為按鈕的 key，例如 'all' 或 'nowind1200') 🌟
+                // 如果 I18N 中沒有，則回退到 timeFilterMap 中儲存的英文標籤 (t.label.en)
+                const i18nKey = key;
+                return I18N[i18nKey] || t.label[currentLang];
+            });
+
+            updateUI();
+        };
+        // Start
+        init();
+
+    </script>
+
+</body>
+
+</html>
