@@ -835,7 +835,7 @@ window.I18N = {
     "barbel_steed": "竹篙頭",
     "bighead_carp": "黑鰱",
     "silver_carp": "鰱魚",
-    "basa": "博士巨鯰",
+    "basa": "博氏巨鯰",
     "yellow_perch": "黃鱸魚",
     "nile_perch": "尼羅尖吻鱸",
     "salmon": "鮭魚",
