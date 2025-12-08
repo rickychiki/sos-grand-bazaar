@@ -1084,7 +1084,7 @@ window.ingredients = [
     ],
     "trending": [],
     "crop_type": "multiple_harvest",
-    "base_yield": 4,
+    "base_yield": 3,
     "grow_times_in_days": 7
   },
   {
