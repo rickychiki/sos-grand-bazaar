@@ -176,9 +176,11 @@ function bindTooltip(selection) {
       };;
       html += `${t(d.id)}<br>`;
       html += d.price ? (isNodeTrending(d) ? `⬆️ ${Math.ceil(d.price * 1.3)}G` : `${d.price}G`) : "";
-      if (d.base_yield && d.grow_times_in_days) {
-        html += `<br><span style="color:#36f">${t(d.crop_type)} (${t("yield")} ${t(d.base_yield)})</span>`;
-        html += `<br><span style="color:#36f">${t("growth_days")} ${t(d.grow_times_in_days)}</span>`;
+      if (d.base_yield && d.grow_times_in_days > 0) {
+        const yieldText = d.base_yield === 1 ? "1~2" : d.crop_type === "fruit_tree" ? d.base_yield + "~" + (d.base_yield + 9) : d.base_yield
+        html += `<br><span style="color:#36f">${t(d.crop_type)} (${t("yield")} ${yieldText})</span>`;
+        const regrowText = "+" + d.regrow_times_in_days + "+" + d.regrow_times_in_days
+        html += `<br><span style="color:#36f">${t("growth_days")} ${t(d.grow_times_in_days)}${d.regrow_times_in_days > 0 ? regrowText : ""}</span>`;
       }
       if (d.craft_time) {
         html += `<br><span style="color:#36f">${d.craft_time / 60} ${t("hours")}</span>`;

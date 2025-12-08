@@ -16,7 +16,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b02",
@@ -35,7 +36,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b03",
@@ -54,7 +56,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b04",
@@ -73,7 +76,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b05",
@@ -92,7 +96,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b06",
@@ -111,7 +116,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b07",
@@ -130,7 +136,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "b08",
@@ -149,7 +156,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c05",
@@ -166,7 +174,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c06",
@@ -183,7 +192,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c07",
@@ -200,7 +210,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c08",
@@ -217,7 +228,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c09",
@@ -237,7 +249,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c10",
@@ -257,7 +270,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c11",
@@ -277,7 +291,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c12",
@@ -297,7 +312,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c13",
@@ -317,7 +333,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c14",
@@ -337,7 +354,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "c15",
@@ -357,7 +375,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "d02",
@@ -374,7 +393,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "d03",
@@ -393,7 +413,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "d04",
@@ -410,7 +431,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "d10",
@@ -426,7 +448,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "d11",
@@ -442,7 +465,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f267",
@@ -461,7 +485,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f268",
@@ -480,7 +505,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f269",
@@ -497,7 +523,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f270",
@@ -514,7 +541,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f271",
@@ -533,7 +561,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f272",
@@ -553,7 +582,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f273",
@@ -572,7 +602,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "f274",
@@ -591,7 +622,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a01",
@@ -605,7 +637,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 4
+    "grow_times_in_days": 4,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a03",
@@ -619,7 +652,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a05",
@@ -634,7 +668,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a07",
@@ -650,7 +685,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 4,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a08",
@@ -666,7 +702,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 4,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a09",
@@ -680,7 +717,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 5
+    "grow_times_in_days": 5,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a11",
@@ -695,7 +733,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a12",
@@ -710,7 +749,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a13",
@@ -726,7 +766,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 4,
-    "grow_times_in_days": 5
+    "grow_times_in_days": 5,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a15",
@@ -740,7 +781,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a16",
@@ -754,7 +796,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a17",
@@ -769,7 +812,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a19",
@@ -783,7 +827,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a21",
@@ -798,7 +843,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 5
+    "grow_times_in_days": 5,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a22",
@@ -813,7 +859,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 5
+    "grow_times_in_days": 5,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a23",
@@ -827,7 +874,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 4
+    "grow_times_in_days": 4,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a25",
@@ -841,7 +889,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a26",
@@ -855,7 +904,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a27",
@@ -870,7 +920,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a29",
@@ -885,7 +936,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 4
+    "grow_times_in_days": 4,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a31",
@@ -899,7 +951,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a33",
@@ -913,7 +966,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 4,
-    "grow_times_in_days": 4
+    "grow_times_in_days": 4,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a35",
@@ -927,7 +981,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a37",
@@ -941,7 +996,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 8
+    "grow_times_in_days": 8,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a39",
@@ -956,7 +1012,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a41",
@@ -970,7 +1027,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 5
+    "grow_times_in_days": 5,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a43",
@@ -984,7 +1042,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 8
+    "grow_times_in_days": 8,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a45",
@@ -999,7 +1058,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a46",
@@ -1014,7 +1074,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a47",
@@ -1028,7 +1089,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a48",
@@ -1042,7 +1104,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a49",
@@ -1056,7 +1119,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 1,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a51",
@@ -1071,7 +1135,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a53",
@@ -1085,7 +1150,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 7
+    "grow_times_in_days": 7,
+    "regrow_times_in_days": 4
   },
   {
     "code": "a55",
@@ -1100,7 +1166,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 4,
-    "grow_times_in_days": 8
+    "grow_times_in_days": 8,
+    "regrow_times_in_days": 5
   },
   {
     "code": "a57",
@@ -1115,7 +1182,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 3,
-    "grow_times_in_days": 6
+    "grow_times_in_days": 6,
+    "regrow_times_in_days": 3
   },
   {
     "code": "a59",
@@ -1129,7 +1197,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a61",
@@ -1143,7 +1212,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a63",
@@ -1157,7 +1227,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a65",
@@ -1172,7 +1243,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a67",
@@ -1186,7 +1258,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a69",
@@ -1200,7 +1273,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 6,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a71",
@@ -1216,7 +1290,8 @@ window.ingredients = [
     ],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a73",
@@ -1230,7 +1305,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a75",
@@ -1245,7 +1321,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a76",
@@ -1260,7 +1337,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a77",
@@ -1274,7 +1352,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a79",
@@ -1288,7 +1367,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 8,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a81",
@@ -1302,7 +1382,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a83",
@@ -1316,7 +1397,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a85",
@@ -1330,7 +1412,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a87",
@@ -1345,7 +1428,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a88",
@@ -1360,7 +1444,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "fruit_tree",
     "base_yield": 7,
-    "grow_times_in_days": 14
+    "grow_times_in_days": 14,
+    "regrow_times_in_days": 7
   },
   {
     "code": "a89",
@@ -1376,7 +1461,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 11
+    "grow_times_in_days": 11,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a90",
@@ -1392,7 +1478,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a91",
@@ -1408,7 +1495,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "single_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 0
   },
   {
     "code": "a92",
@@ -1422,7 +1510,8 @@ window.ingredients = [
     "trending": [],
     "crop_type": "multiple_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 5
   },
   {
     "code": "i01",
@@ -1444,7 +1533,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i02",
@@ -1466,7 +1556,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i03",
@@ -1482,7 +1573,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i04",
@@ -1498,7 +1590,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i05",
@@ -1514,7 +1607,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i06",
@@ -1532,7 +1626,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i07",
@@ -1550,7 +1645,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i08",
@@ -1570,7 +1666,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i09",
@@ -1590,7 +1687,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i10",
@@ -1608,7 +1706,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i11",
@@ -1626,7 +1725,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i12",
@@ -1644,7 +1744,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i13",
@@ -1662,7 +1763,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i14",
@@ -1682,7 +1784,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i15",
@@ -1700,7 +1803,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i16",
@@ -1716,7 +1820,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i17",
@@ -1732,7 +1837,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i18",
@@ -1750,7 +1856,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i19",
@@ -1770,7 +1877,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i20",
@@ -1790,7 +1898,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i21",
@@ -1810,7 +1919,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i22",
@@ -1830,7 +1940,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i23",
@@ -1849,7 +1960,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i24",
@@ -1867,7 +1979,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i25",
@@ -1887,7 +2000,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i26",
@@ -1907,7 +2021,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i27",
@@ -1925,7 +2040,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i28",
@@ -1941,7 +2057,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i29",
@@ -1959,7 +2076,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i30",
@@ -1977,7 +2095,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i31",
@@ -1999,7 +2118,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i32",
@@ -2021,7 +2141,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i33",
@@ -2043,7 +2164,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i34",
@@ -2061,7 +2183,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i35",
@@ -2079,7 +2202,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i36",
@@ -2097,7 +2221,8 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   },
   {
     "code": "i37",
@@ -2115,6 +2240,7 @@ window.ingredients = [
     ],
     "crop_type": "none",
     "base_yield": null,
-    "grow_times_in_days": 0
+    "grow_times_in_days": 0,
+    "regrow_times_in_days": 0
   }
 ];

@@ -1077,7 +1077,8 @@ window.processed_goods = [
     ],
     "crop_type": "multiple_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 5
   },
   {
     "code": "a94",
@@ -1096,6 +1097,7 @@ window.processed_goods = [
     ],
     "crop_type": "multiple_harvest",
     "base_yield": 5,
-    "grow_times_in_days": 9
+    "grow_times_in_days": 9,
+    "regrow_times_in_days": 5
   }
 ];
